@@ -15,6 +15,9 @@
 		796142601BFF5FFE009E064A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7961425E1BFF5FFE009E064A /* LaunchScreen.storyboard */; };
 		7961426B1BFF5FFE009E064A /* PicTilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961426A1BFF5FFE009E064A /* PicTilesTests.swift */; };
 		796142761BFF5FFE009E064A /* PicTilesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796142751BFF5FFE009E064A /* PicTilesUITests.swift */; };
+		796142841BFF62B0009E064A /* apple-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 796142831BFF62B0009E064A /* apple-01.jpg */; };
+		796142861BFF6352009E064A /* darkbg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 796142851BFF6352009E064A /* darkbg.gif */; };
+		796142881BFF6406009E064A /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 796142871BFF6406009E064A /* cat.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		796142711BFF5FFE009E064A /* PicTilesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicTilesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		796142751BFF5FFE009E064A /* PicTilesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicTilesUITests.swift; sourceTree = "<group>"; };
 		796142771BFF5FFE009E064A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		796142831BFF62B0009E064A /* apple-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "apple-01.jpg"; path = "PicTiles/apple-01.jpg"; sourceTree = "<group>"; };
+		796142851BFF6352009E064A /* darkbg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = darkbg.gif; sourceTree = "<group>"; };
+		796142871BFF6406009E064A /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,9 @@
 		796142461BFF5FFE009E064A = {
 			isa = PBXGroup;
 			children = (
+				796142871BFF6406009E064A /* cat.jpg */,
+				796142851BFF6352009E064A /* darkbg.gif */,
+				796142831BFF62B0009E064A /* apple-01.jpg */,
 				796142511BFF5FFE009E064A /* PicTiles */,
 				796142691BFF5FFE009E064A /* PicTilesTests */,
 				796142741BFF5FFE009E064A /* PicTilesUITests */,
@@ -233,8 +242,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				796142601BFF5FFE009E064A /* LaunchScreen.storyboard in Resources */,
+				796142861BFF6352009E064A /* darkbg.gif in Resources */,
+				796142881BFF6406009E064A /* cat.jpg in Resources */,
 				7961425D1BFF5FFE009E064A /* Assets.xcassets in Resources */,
 				796142581BFF5FFE009E064A /* Main.storyboard in Resources */,
+				796142841BFF62B0009E064A /* apple-01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +500,7 @@
 				7961427C1BFF5FFE009E064A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7961427D1BFF5FFE009E064A /* Build configuration list for PBXNativeTarget "PicTilesTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +509,7 @@
 				7961427F1BFF5FFE009E064A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		796142801BFF5FFE009E064A /* Build configuration list for PBXNativeTarget "PicTilesUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +518,7 @@
 				796142821BFF5FFE009E064A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
