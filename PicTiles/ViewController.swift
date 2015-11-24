@@ -12,6 +12,8 @@ import Darwin
 class ViewController: UIViewController {
     
     @IBOutlet var collectionOfImages: Array<UIImageView>?
+    @IBOutlet weak var moveLabel: UILabel!
+    
     var imagesPosition: [Int] = [Int](count: 9, repeatedValue: -1)
     
     var indexTap1 = -1
@@ -19,6 +21,10 @@ class ViewController: UIViewController {
     
     let puzzleSize = 9
     let tilesPerRow = 3
+    
+    var image:UIImage!
+    
+    var moveCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +38,17 @@ class ViewController: UIViewController {
         }
         
         randomCreateImage()
+        moveUpdate()
+    }
+    
+    func moveUpdate(){
+        
+        moveLabel.text = String(format: "Move: %d",moveCount)
     }
     
     func randomCreateImage(){
         
-        let image: UIImage! = UIImage.init(named: "cat.jpg")
+        image = UIImage.init(named: "cat.jpg")
         let imageBlank: UIImage! = UIImage.init(named: "darkbg.gif")
         
         let tempImageRef: CGImageRef = image.CGImage!
@@ -126,12 +138,27 @@ class ViewController: UIViewController {
                 
                 imagesPosition[indexTap1] = imagesPosition[indexTap2]
                 imagesPosition[indexTap2] = posTemp
+                
+                moveCount++
             
             }
             
             indexTap1 = -1
             indexTap2 = -1
+            
         }
+        
+        if(checkFinish()){
+            
+            let alert = UIAlertController(title: "Hoo-ray!!",
+                message: "You've finished the puzzle",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        moveUpdate()
         
     }
     
@@ -168,7 +195,25 @@ class ViewController: UIViewController {
             }
         }
         
+        NSLog("%d",inversion)
+        
         return inversion%2 == 0
+    }
+    
+    func checkFinish()->Bool{
+        
+        var inversion = 0
+        
+        for i in 0..<(imagesPosition.count-1){
+            for j in i+1..<(imagesPosition.count-1){
+                
+                if(imagesPosition[i]>imagesPosition[j]){
+                    inversion++
+                }
+            }
+        }
+        
+        return inversion == 0
     }
 
 }

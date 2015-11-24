@@ -18,6 +18,9 @@
 		796142841BFF62B0009E064A /* apple-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 796142831BFF62B0009E064A /* apple-01.jpg */; };
 		796142861BFF6352009E064A /* darkbg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 796142851BFF6352009E064A /* darkbg.gif */; };
 		796142881BFF6406009E064A /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 796142871BFF6406009E064A /* cat.jpg */; };
+		79E67B371C035B7100E4C0AC /* OpenCv.mm in Sources */ = {isa = PBXBuildFile; fileRef = 79E67B361C035B7100E4C0AC /* OpenCv.mm */; };
+		79F657BB1C03688800226015 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 79F657BA1C03688800226015 /* UIImage+OpenCV.mm */; };
+		79F657BE1C036F7C00226015 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F657BD1C036F7C00226015 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,13 @@
 		796142831BFF62B0009E064A /* apple-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "apple-01.jpg"; path = "PicTiles/apple-01.jpg"; sourceTree = "<group>"; };
 		796142851BFF6352009E064A /* darkbg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = darkbg.gif; sourceTree = "<group>"; };
 		796142871BFF6406009E064A /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
+		79E67B2B1C03596B00E4C0AC /* PicTiles-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicTiles-Bridging-Header.h"; sourceTree = "<group>"; };
+		79E67B351C035B4500E4C0AC /* OpenCv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCv.h; sourceTree = "<group>"; };
+		79E67B361C035B7100E4C0AC /* OpenCv.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = OpenCv.mm; sourceTree = "<group>"; };
+		79E67B3D1C035E8600E4C0AC /* UIImage+OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+OpenCV.h"; path = "../UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		79F657B91C03687300226015 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		79F657BA1C03688800226015 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
+		79F657BD1C036F7C00226015 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../Downloads/opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F657BE1C036F7C00226015 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +103,7 @@
 				796142691BFF5FFE009E064A /* PicTilesTests */,
 				796142741BFF5FFE009E064A /* PicTilesUITests */,
 				796142501BFF5FFE009E064A /* Products */,
+				79F657BC1C036C3D00226015 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,13 +120,20 @@
 		796142511BFF5FFE009E064A /* PicTiles */ = {
 			isa = PBXGroup;
 			children = (
+				79F657BD1C036F7C00226015 /* opencv2.framework */,
 				796142521BFF5FFE009E064A /* AppDelegate.swift */,
+				79F657B91C03687300226015 /* UIImage+OpenCV.h */,
+				79F657BA1C03688800226015 /* UIImage+OpenCV.mm */,
 				796142541BFF5FFE009E064A /* ViewController.swift */,
 				796142561BFF5FFE009E064A /* Main.storyboard */,
 				7961425C1BFF5FFE009E064A /* Assets.xcassets */,
 				7961425E1BFF5FFE009E064A /* LaunchScreen.storyboard */,
 				796142611BFF5FFE009E064A /* Info.plist */,
 				796142591BFF5FFE009E064A /* PicTiles.xcdatamodeld */,
+				79E67B2B1C03596B00E4C0AC /* PicTiles-Bridging-Header.h */,
+				79E67B351C035B4500E4C0AC /* OpenCv.h */,
+				79E67B361C035B7100E4C0AC /* OpenCv.mm */,
+				79E67B3D1C035E8600E4C0AC /* UIImage+OpenCV.h */,
 			);
 			path = PicTiles;
 			sourceTree = "<group>";
@@ -135,6 +154,13 @@
 				796142771BFF5FFE009E064A /* Info.plist */,
 			);
 			path = PicTilesUITests;
+			sourceTree = "<group>";
+		};
+		79F657BC1C036C3D00226015 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +299,9 @@
 			files = (
 				7961425B1BFF5FFE009E064A /* PicTiles.xcdatamodeld in Sources */,
 				796142551BFF5FFE009E064A /* ViewController.swift in Sources */,
+				79E67B371C035B7100E4C0AC /* OpenCv.mm in Sources */,
 				796142531BFF5FFE009E064A /* AppDelegate.swift in Sources */,
+				79F657BB1C03688800226015 /* UIImage+OpenCV.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +392,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -403,7 +432,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -415,10 +445,34 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = PicTiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					lopencv_calib3d,
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = SIIT.PicTiles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicTiles/PicTiles-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -426,10 +480,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = PicTiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					lopencv_calib3d,
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = SIIT.PicTiles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PicTiles/PicTiles-Bridging-Header.h";
 			};
 			name = Release;
 		};

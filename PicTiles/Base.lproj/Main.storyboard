@@ -44,11 +44,31 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4I-lb-xXk" userLabel="ImageView1">
                                 <rect key="frame" x="20" y="52" width="105" height="105"/>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odb-ab-Z2K">
+                                <rect key="frame" x="0.0" y="429" width="375" height="238"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" id="Mo7-lY-KnN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-Vf-vR9" userLabel="moveLabel">
+                                            <rect key="frame" x="166" y="28" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.8633996212121211" green="0.8633996212121211" blue="0.8633996212121211" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iLg-Vf-vR9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9AA-Gd-uGY"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="moveLabel" destination="iLg-Vf-vR9" id="Hzm-Vc-bau"/>
                         <outletCollection property="collectionOfImages" destination="F4I-lb-xXk" collectionClass="NSMutableArray" id="exg-Zl-JYo"/>
                         <outletCollection property="collectionOfImages" destination="ZtN-mf-gHq" collectionClass="NSMutableArray" id="Daa-za-3dT"/>
                         <outletCollection property="collectionOfImages" destination="Oc4-JF-5Zn" collectionClass="NSMutableArray" id="psW-l0-a3e"/>
