@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iMS-ti-5JR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--3x3 Puzzle-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EightPuzzle" title="3x3 Puzzle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="EightPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -82,7 +82,191 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.5" y="355.5"/>
+            <point key="canvasLocation" x="636.5" y="37.5"/>
+        </scene>
+        <!--Option-->
+        <scene sceneID="nya-ai-MnU">
+            <objects>
+                <viewController title="Option" id="iMS-ti-5JR" customClass="OptionController" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xle-rD-X6C"/>
+                        <viewControllerLayoutGuide type="bottom" id="sSP-Ka-D1e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sCW-dt-zfd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Difficulty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrq-fh-C2j">
+                                <rect key="frame" x="20" y="48" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Puzzle Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mco-30-9t7">
+                                <rect key="frame" x="20" y="160" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DUk-XR-Yo8">
+                                <rect key="frame" x="20" y="208" width="91" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="3 x3"/>
+                                    <segment title="4 x 4"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qov-eq-6Gk">
+                                <rect key="frame" x="20" y="92" width="335" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Hard"/>
+                                    <segment title="Extreme"/>
+                                    <segment title="Impossible"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-m9-trV">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="JXK-O5-4Ct">
+                                        <color key="tintColor" red="1" green="0.20231833981013692" blue="0.042666983535516345" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7Ve-Un-OeS"/>
+                                    <barButtonItem title="Start" id="LKc-XV-br6">
+                                        <connections>
+                                            <action selector="startGame:" destination="iMS-ti-5JR" id="GYN-27-hEl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qov-eq-6Gk" firstAttribute="top" secondItem="Yrq-fh-C2j" secondAttribute="bottom" constant="23" id="8FF-5X-mU9"/>
+                            <constraint firstItem="DUk-XR-Yo8" firstAttribute="top" secondItem="Mco-30-9t7" secondAttribute="bottom" constant="23" id="gZG-XD-1Ko"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="difficultySegment" destination="qov-eq-6Gk" id="sDk-7E-pD6"/>
+                        <outlet property="sizeSegment" destination="DUk-XR-Yo8" id="oxf-AF-nht"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="EightPuzzle" id="hH6-hE-w7b"/>
+                        <segue destination="prq-Zq-gQV" kind="show" identifier="FifteenPuzzle" id="cGV-w6-hiU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r49-7m-i9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16.5" y="350.5"/>
+        </scene>
+        <!--4x4 Puzzle-->
+        <scene sceneID="hiu-kJ-UaB">
+            <objects>
+                <viewController storyboardIdentifier="FifteenPuzzle" title="4x4 Puzzle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="prq-Zq-gQV" userLabel="4x4 Puzzle" customClass="FifteenPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nfv-AN-kkg"/>
+                        <viewControllerLayoutGuide type="bottom" id="W4f-w5-Lsv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RbB-TB-qcU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-sX-PZI" userLabel="ImageView1">
+                                <rect key="frame" x="18" y="39" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-f9-hC9" userLabel="ImageView2">
+                                <rect key="frame" x="103" y="39" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U49-PY-jDF" userLabel="ImageView3">
+                                <rect key="frame" x="188" y="39" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-ya-721" userLabel="ImageView4">
+                                <rect key="frame" x="273" y="39" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTM-5Z-OCJ" userLabel="ImageView5">
+                                <rect key="frame" x="18" y="124" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ma0-oT-FVV" userLabel="ImageView6">
+                                <rect key="frame" x="103" y="124" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AVm-nJ-etw" userLabel="ImageView7">
+                                <rect key="frame" x="188" y="124" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eyz-Cn-rVn" userLabel="ImageView8">
+                                <rect key="frame" x="273" y="124" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JyK-gK-WFp" userLabel="ImageView9">
+                                <rect key="frame" x="18" y="210" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8h-XQ-Qxb" userLabel="ImageView10">
+                                <rect key="frame" x="103" y="210" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GD9-vr-IZh" userLabel="ImageView11">
+                                <rect key="frame" x="188" y="210" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6K-V2-Aeg" userLabel="ImageView12">
+                                <rect key="frame" x="273" y="210" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOP-Uc-3kc" userLabel="ImageView13">
+                                <rect key="frame" x="18" y="297" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHG-Yr-mIf" userLabel="ImageView14">
+                                <rect key="frame" x="103" y="297" width="83" height="83"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaG-Ha-o7z" userLabel="ImageView15">
+                                <rect key="frame" x="188" y="297" width="83" height="83"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OD9-C3-sgD">
+                                <rect key="frame" x="0.0" y="429" width="375" height="238"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" id="a7Z-CX-wXc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-IT-imU" userLabel="moveLabel">
+                                            <rect key="frame" x="166" y="28" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYq-Mc-roX" userLabel="ImageView16">
+                                <rect key="frame" x="273" y="297" width="83" height="83"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86339962120000002" green="0.86339962120000002" blue="0.86339962120000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="9w7-IT-imU" firstAttribute="centerX" secondItem="RbB-TB-qcU" secondAttribute="centerX" id="Hd0-1L-sEO"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="moveLabel" destination="9w7-IT-imU" id="E09-E3-q8T"/>
+                        <outletCollection property="collectionOfImages" destination="ai2-sX-PZI" collectionClass="NSMutableArray" id="48i-sH-GmC"/>
+                        <outletCollection property="collectionOfImages" destination="6Y1-f9-hC9" collectionClass="NSMutableArray" id="zVV-L3-mIi"/>
+                        <outletCollection property="collectionOfImages" destination="U49-PY-jDF" collectionClass="NSMutableArray" id="hsb-oK-0gQ"/>
+                        <outletCollection property="collectionOfImages" destination="YEu-ya-721" collectionClass="NSMutableArray" id="QNE-OA-S8O"/>
+                        <outletCollection property="collectionOfImages" destination="lTM-5Z-OCJ" collectionClass="NSMutableArray" id="VMr-Ox-Hn7"/>
+                        <outletCollection property="collectionOfImages" destination="ma0-oT-FVV" collectionClass="NSMutableArray" id="Ar0-zK-Dzm"/>
+                        <outletCollection property="collectionOfImages" destination="AVm-nJ-etw" collectionClass="NSMutableArray" id="scq-hb-DGd"/>
+                        <outletCollection property="collectionOfImages" destination="Eyz-Cn-rVn" collectionClass="NSMutableArray" id="jZI-0M-6lD"/>
+                        <outletCollection property="collectionOfImages" destination="JyK-gK-WFp" collectionClass="NSMutableArray" id="f4y-BT-6A5"/>
+                        <outletCollection property="collectionOfImages" destination="s8h-XQ-Qxb" collectionClass="NSMutableArray" id="brO-mG-B4F"/>
+                        <outletCollection property="collectionOfImages" destination="GD9-vr-IZh" collectionClass="NSMutableArray" id="Dso-dZ-9Tz"/>
+                        <outletCollection property="collectionOfImages" destination="F6K-V2-Aeg" collectionClass="NSMutableArray" id="2JB-FQ-Kym"/>
+                        <outletCollection property="collectionOfImages" destination="VOP-Uc-3kc" collectionClass="NSMutableArray" id="Gkq-yz-Voj"/>
+                        <outletCollection property="collectionOfImages" destination="oHG-Yr-mIf" collectionClass="NSMutableArray" id="yYg-I1-Aae"/>
+                        <outletCollection property="collectionOfImages" destination="YaG-Ha-o7z" collectionClass="NSMutableArray" id="nqb-JF-T3h"/>
+                        <outletCollection property="collectionOfImages" destination="LYq-Mc-roX" collectionClass="NSMutableArray" id="B0T-LN-Xt9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Bn-fd-Pub" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="636.5" y="781.5"/>
         </scene>
     </scenes>
 </document>

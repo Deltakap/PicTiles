@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CVWrapper : NSObject
+@interface OpenCV : NSObject
 
 + (UIImage*) processImageWithOpenCV: (UIImage*) inputImage;
++ (UIImage*) processImageWithOpenCV2: (UIImage*) inputImage;
 
 @end

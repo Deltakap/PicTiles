@@ -9,11 +9,23 @@
 #include "OpenCV.h"
 #import "UIImage+OpenCV.h"
 
-@implementation OpenCVWrapper : NSObject
+using namespace cv;
+using namespace std;
+
+@implementation OpenCV : NSObject
 
 + (UIImage*) processImageWithOpenCV: (UIImage*) inputImage{
     
+    Mat img = [inputImage CVMat];
     
+    return [UIImage imageWithCVMat:img];
+}
+
++ (UIImage*) processImageWithOpenCV2: (UIImage*) inputImage{
+    
+    Mat img = [inputImage CVGrayscaleMat];
+    
+    return [UIImage imageWithCVMat:img];
 }
 
 @end

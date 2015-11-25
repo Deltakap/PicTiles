@@ -1,0 +1,6 @@
+version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
+options: "70530561f8472b3682478898c184203a"
+build_time: [501757241, 790910000]
+inputs:
+  "/Users/puttipongs/Desktop/PicTiles/PicTiles/ViewController.swift": [501756804, 0]
+  "/Users/puttipongs/Desktop/PicTiles/PicTiles/AppDelegate.swift": [501343486, 0]
