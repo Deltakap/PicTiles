@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iMS-ti-5JR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CaY-NA-qJg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -8,7 +8,7 @@
         <!--3x3 Puzzle-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="EightPuzzle" title="3x3 Puzzle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="EightPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EightPuzzle" title="3x3 Puzzle" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="EightPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -44,27 +44,40 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4I-lb-xXk" userLabel="ImageView1">
                                 <rect key="frame" x="20" y="52" width="105" height="105"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odb-ab-Z2K">
-                                <rect key="frame" x="0.0" y="429" width="375" height="238"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" id="Mo7-lY-KnN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-Vf-vR9" userLabel="moveLabel">
-                                            <rect key="frame" x="166" y="28" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="extraLight"/>
-                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSw-r4-1eW">
+                                <rect key="frame" x="75" y="524" width="50" height="50"/>
+                                <state key="normal" backgroundImage="Circled Left-50.png">
+                                    <color key="titleColor" red="1" green="0.2023183398" blue="0.042666983540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8ue-SK-1Vy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-Vf-vR9" userLabel="moveLabel">
+                                <rect key="frame" x="127" y="463" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zob-iY-MCo">
+                                <rect key="frame" x="134" y="617" width="102" height="30"/>
+                                <state key="normal" title="Show Original"/>
+                                <connections>
+                                    <segue destination="mYG-PB-bVg" kind="presentation" identifier="showOriginal" modalTransitionStyle="partialCurl" id="dhI-VL-glK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedline.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ewx-Oa-pCR">
+                                <rect key="frame" x="13" y="390" width="362" height="58"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqh-w4-NhD">
+                                <rect key="frame" x="246" y="529" width="45" height="45"/>
+                                <state key="normal" image="Restart-50.png"/>
+                                <connections>
+                                    <action selector="resetClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hum-Xo-uMm"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8633996212121211" green="0.8633996212121211" blue="0.8633996212121211" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="iLg-Vf-vR9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9AA-Gd-uGY"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="0.96331934850000001" blue="0.88084868709999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -84,6 +97,45 @@
             </objects>
             <point key="canvasLocation" x="636.5" y="37.5"/>
         </scene>
+        <!--StartScreen-->
+        <scene sceneID="w6v-Eq-rGX">
+            <objects>
+                <viewController title="StartScreen" id="CaY-NA-qJg" userLabel="StartScreen" customClass="StartScreen" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zhr-wz-zYl"/>
+                        <viewControllerLayoutGuide type="bottom" id="dgk-6P-GYB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5vZ-z2-q8H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Drawing.png" translatesAutoresizingMaskIntoConstraints="NO" id="K1A-30-Ag7">
+                                <rect key="frame" x="63" y="60" width="260" height="213"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRe-vW-3Uh">
+                                <rect key="frame" x="151" y="487" width="73" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playGame:" destination="CaY-NA-qJg" eventType="touchUpInside" id="1Vm-ZM-XBA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.96331934851034717" blue="0.8808486870719574" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yRe-vW-3Uh" firstAttribute="centerX" secondItem="5vZ-z2-q8H" secondAttribute="centerX" id="WBm-Fi-njl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aZO-ph-bfk"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="iMS-ti-5JR" kind="show" identifier="toOption" id="eJr-TP-lRN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uYn-U9-u2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-550.5" y="350.5"/>
+        </scene>
         <!--Option-->
         <scene sceneID="nya-ai-MnU">
             <objects>
@@ -97,28 +149,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Difficulty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrq-fh-C2j">
-                                <rect key="frame" x="20" y="48" width="69" height="21"/>
+                                <rect key="frame" x="20" y="109" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Puzzle Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mco-30-9t7">
-                                <rect key="frame" x="20" y="160" width="88" height="21"/>
+                                <rect key="frame" x="20" y="256" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DUk-XR-Yo8">
-                                <rect key="frame" x="20" y="208" width="91" height="29"/>
+                                <rect key="frame" x="20" y="304" width="91" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="3 x3"/>
                                     <segment title="4 x 4"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qov-eq-6Gk">
-                                <rect key="frame" x="20" y="92" width="335" height="29"/>
+                                <rect key="frame" x="20" y="153" width="335" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Normal"/>
@@ -133,6 +185,9 @@
                                 <items>
                                     <barButtonItem title="Back" id="JXK-O5-4Ct">
                                         <color key="tintColor" red="1" green="0.20231833981013692" blue="0.042666983535516345" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="backToStart:" destination="iMS-ti-5JR" id="Mka-qm-IQr"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7Ve-Un-OeS"/>
                                     <barButtonItem title="Start" id="LKc-XV-br6">
@@ -142,8 +197,21 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PicTiles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xh-Lx-rzM">
+                                <rect key="frame" x="148" y="37" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4vF-wz-dgQ">
+                                <rect key="frame" x="20" y="72" width="335" height="5"/>
+                                <color key="backgroundColor" red="0.79796006944444442" green="0.79796006944444442" blue="0.79796006944444442" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedline.png" translatesAutoresizingMaskIntoConstraints="NO" id="YGf-Md-OoF">
+                                <rect key="frame" x="0.0" y="189" width="375" height="70"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.96331934850000001" blue="0.88084868709999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qov-eq-6Gk" firstAttribute="top" secondItem="Yrq-fh-C2j" secondAttribute="bottom" constant="23" id="8FF-5X-mU9"/>
                             <constraint firstItem="DUk-XR-Yo8" firstAttribute="top" secondItem="Mco-30-9t7" secondAttribute="bottom" constant="23" id="gZG-XD-1Ko"/>
@@ -153,18 +221,19 @@
                     <connections>
                         <outlet property="difficultySegment" destination="qov-eq-6Gk" id="sDk-7E-pD6"/>
                         <outlet property="sizeSegment" destination="DUk-XR-Yo8" id="oxf-AF-nht"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="EightPuzzle" id="hH6-hE-w7b"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="EightPuzzle" action="showDetailViewController:sender:" id="hH6-hE-w7b"/>
                         <segue destination="prq-Zq-gQV" kind="show" identifier="FifteenPuzzle" id="cGV-w6-hiU"/>
+                        <segue destination="CaY-NA-qJg" kind="show" identifier="backToStart" id="zaG-3b-skS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r49-7m-i9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16.5" y="350.5"/>
+            <point key="canvasLocation" x="-23.5" y="350.5"/>
         </scene>
         <!--4x4 Puzzle-->
         <scene sceneID="hiu-kJ-UaB">
             <objects>
-                <viewController storyboardIdentifier="FifteenPuzzle" title="4x4 Puzzle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="prq-Zq-gQV" userLabel="4x4 Puzzle" customClass="FifteenPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FifteenPuzzle" title="4x4 Puzzle" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="prq-Zq-gQV" userLabel="4x4 Puzzle" customClass="FifteenPuzzle" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nfv-AN-kkg"/>
                         <viewControllerLayoutGuide type="bottom" id="W4f-w5-Lsv"/>
@@ -218,34 +287,47 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaG-Ha-o7z" userLabel="ImageView15">
                                 <rect key="frame" x="188" y="297" width="83" height="83"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OD9-C3-sgD">
-                                <rect key="frame" x="0.0" y="429" width="375" height="238"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" id="a7Z-CX-wXc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-IT-imU" userLabel="moveLabel">
-                                            <rect key="frame" x="166" y="28" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="extraLight"/>
-                            </visualEffectView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYq-Mc-roX" userLabel="ImageView16">
                                 <rect key="frame" x="273" y="297" width="83" height="83"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAY-a5-Wbd" userLabel="moveLabel">
+                                <rect key="frame" x="120" y="463" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qij-1d-aIZ">
+                                <rect key="frame" x="75" y="524" width="50" height="50"/>
+                                <state key="normal" backgroundImage="Circled Left-50.png">
+                                    <color key="titleColor" red="1" green="0.2023183398" blue="0.042666983540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitView:" destination="prq-Zq-gQV" eventType="touchUpInside" id="R9r-Bb-LOg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80a-q9-JMw">
+                                <rect key="frame" x="134" y="617" width="107" height="30"/>
+                                <state key="normal" title="Show Original"/>
+                                <connections>
+                                    <segue destination="mYG-PB-bVg" kind="presentation" identifier="showOriginal" modalTransitionStyle="partialCurl" id="QFQ-Zp-eKa"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dottedline.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jcu-jI-iPq">
+                                <rect key="frame" x="18" y="381" width="357" height="58"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K08-aO-QDg">
+                                <rect key="frame" x="246" y="529" width="45" height="45"/>
+                                <state key="normal" backgroundImage="Restart-50.png"/>
+                                <connections>
+                                    <action selector="resetClick:" destination="prq-Zq-gQV" eventType="touchUpInside" id="Uwk-QH-tgm"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.86339962120000002" green="0.86339962120000002" blue="0.86339962120000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="9w7-IT-imU" firstAttribute="centerX" secondItem="RbB-TB-qcU" secondAttribute="centerX" id="Hd0-1L-sEO"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="0.96331934850000001" blue="0.88084868709999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="moveLabel" destination="9w7-IT-imU" id="E09-E3-q8T"/>
+                        <outlet property="moveLabel" destination="iAY-a5-Wbd" id="e2L-Sf-wbz"/>
                         <outletCollection property="collectionOfImages" destination="ai2-sX-PZI" collectionClass="NSMutableArray" id="48i-sH-GmC"/>
                         <outletCollection property="collectionOfImages" destination="6Y1-f9-hC9" collectionClass="NSMutableArray" id="zVV-L3-mIi"/>
                         <outletCollection property="collectionOfImages" destination="U49-PY-jDF" collectionClass="NSMutableArray" id="hsb-oK-0gQ"/>
@@ -268,5 +350,51 @@
             </objects>
             <point key="canvasLocation" x="636.5" y="781.5"/>
         </scene>
+        <!--Original Image-->
+        <scene sceneID="tM1-iq-0YN">
+            <objects>
+                <viewController title="Original Image" id="mYG-PB-bVg" userLabel="Original Image" customClass="OriginalImage" customModule="PicTiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pf5-6o-1KD"/>
+                        <viewControllerLayoutGuide type="bottom" id="eCP-pc-Hkr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dY2-qo-aNA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZEN-Bq-ff5">
+                                <rect key="frame" x="0.0" y="50" width="375" height="375"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh1-Ac-kY8">
+                                <rect key="frame" x="162" y="521" width="50" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" backgroundImage="Circled Left-50.png">
+                                    <color key="titleColor" red="1" green="0.2023183398" blue="0.042666983540000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="mYG-PB-bVg" eventType="touchUpInside" id="6Zy-Eb-7nr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.96331934850000001" blue="0.88084868709999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="originalimg" destination="ZEN-Bq-ff5" id="aTe-A9-gtk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLg-9d-fgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1225.5" y="488.5"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Circled Left-50.png" width="50" height="50"/>
+        <image name="Drawing.png" width="524" height="374"/>
+        <image name="Restart-50.png" width="50" height="50"/>
+        <image name="dottedline.png" width="500" height="500"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="QFQ-Zp-eKa"/>
+    </inferredMetricsTieBreakers>
 </document>

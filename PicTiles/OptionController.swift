@@ -13,6 +13,8 @@ class OptionController: UIViewController {
     @IBOutlet weak var difficultySegment: UISegmentedControl!
     @IBOutlet weak var sizeSegment: UISegmentedControl!
     
+    var image:UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -31,10 +33,24 @@ class OptionController: UIViewController {
         }
     }
     
+    @IBAction func backToStart(sender: AnyObject) {
+        
+        performSegueWithIdentifier("backToStart", sender:self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let svc = segue.destinationViewController as! EightPuzzle
-        svc.difficulty = difficultySegment.selectedSegmentIndex
+        if(segue.identifier == "EightPuzzle"){
+            let svc = segue.destinationViewController as! EightPuzzle
+            svc.difficulty = difficultySegment.selectedSegmentIndex
+            svc.image = self.image
+        }
+        
+        if(segue.identifier == "FifteenPuzzle"){
+            let svc = segue.destinationViewController as! FifteenPuzzle
+            svc.difficulty = difficultySegment.selectedSegmentIndex
+            svc.image = self.image
+        }
     }
     
 }

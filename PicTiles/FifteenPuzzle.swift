@@ -14,6 +14,8 @@ class FifteenPuzzle: UIViewController {
     @IBOutlet weak var moveLabel: UILabel!
     
     var imagesPosition: [Int] = [Int](count: 16, repeatedValue: -1)
+    var tempImagesPosition: [Int] = [Int](count: 16, repeatedValue: -1)
+    var imageTileList:[UIImage] = []
     
     var indexTap1 = -1
     var indexTap2 = -1
@@ -24,6 +26,8 @@ class FifteenPuzzle: UIViewController {
     var image:UIImage!
     
     var moveCount = 0
+    
+    var difficulty = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +51,22 @@ class FifteenPuzzle: UIViewController {
     
     func randomCreateImage(){
         
-        image = UIImage.init(named: "cat.jpg")
+        var processedImage:UIImage?
         
-        let processedImage = OpenCV.processImageWithOpenCV(image)
+        imageTileList = [UIImage](count: 16, repeatedValue: image)
+        
+        if(difficulty == 0){
+            
+            processedImage = OpenCV.processImageWithOpenCV(image)
+        }
+        else if(difficulty == 1){
+            
+            processedImage = OpenCV.processImageWithOpenCV2(image)
+        }
         
         let imageBlank: UIImage! = UIImage.init(named: "darkbg.gif")
         
-        let tempImageRef: CGImageRef = processedImage.CGImage!
-        
-        var imageTileList = [UIImage](count: 16, repeatedValue: image)
+        let tempImageRef: CGImageRef = processedImage!.CGImage!
         
         for (var i = 0; i<tilesPerRow; i++) {
             for(var j = 0; j<tilesPerRow; j++){
@@ -87,10 +98,12 @@ class FifteenPuzzle: UIViewController {
         for i in 0..<(puzzleSize-1){
             
             imagesPosition[i] = positionTemp[i]
+            tempImagesPosition[i] = positionTemp[i]
             collectionOfImages![i].image = imageTileList[positionTemp[i]]
         }
         
         imagesPosition[puzzleSize-1] = 15
+        tempImagesPosition[puzzleSize-1] = 15
         collectionOfImages![puzzleSize-1].image = imageBlank
     }
     
@@ -189,7 +202,7 @@ class FifteenPuzzle: UIViewController {
         var inversion = 0
         
         for i in 0..<(list.count-1){
-            for j in i+1..<(list.count-1){
+            for j in i+1..<(list.count){
                 
                 if(list[i]>list[j]){
                     inversion++
@@ -221,6 +234,30 @@ class FifteenPuzzle: UIViewController {
         
         return inversion == 0
     }
-
+    
+    @IBAction func exitView(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "showOriginal"){
+            
+            let svc = segue.destinationViewController as! OriginalImage
+            svc.image = self.image
+        }
+    }
+    
+    @IBAction func resetClick(sender: AnyObject) {
+        
+        for i in 0..<(tempImagesPosition.count){
+            
+            collectionOfImages![i].image = imageTileList[tempImagesPosition[i]]
+            imagesPosition[i] = tempImagesPosition[i]
+            moveCount = 0
+            moveUpdate()
+        }
+    }
 
 }

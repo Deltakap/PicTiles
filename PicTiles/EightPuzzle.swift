@@ -15,6 +15,8 @@ class EightPuzzle: UIViewController {
     @IBOutlet weak var moveLabel: UILabel!
     
     var imagesPosition: [Int] = [Int](count: 9, repeatedValue: -1)
+    var tempImagesPosition: [Int] = [Int](count: 9, repeatedValue: -1)
+    var imageTileList:[UIImage] = []
     
     var indexTap1 = -1
     var indexTap2 = -1
@@ -50,9 +52,9 @@ class EightPuzzle: UIViewController {
     
     func randomCreateImage(){
         
-        image = UIImage.init(named: "cat.jpg")
-        
         var processedImage:UIImage?
+        
+        imageTileList = [UIImage](count: 9, repeatedValue: image)
         
         if(difficulty == 0){
             
@@ -66,8 +68,6 @@ class EightPuzzle: UIViewController {
         let imageBlank: UIImage! = UIImage.init(named: "darkbg.gif")
         
         let tempImageRef: CGImageRef = processedImage!.CGImage!
-        
-        var imageTileList = [UIImage](count: 9, repeatedValue: image)
         
         for (var i = 0; i<tilesPerRow; i++) {
             for(var j = 0; j<tilesPerRow; j++){
@@ -99,11 +99,14 @@ class EightPuzzle: UIViewController {
         for i in 0..<(puzzleSize-1){
             
             imagesPosition[i] = positionTemp[i]
+            tempImagesPosition[i] = positionTemp[i]
             collectionOfImages![i].image = imageTileList[positionTemp[i]]
         }
         
         imagesPosition[puzzleSize-1] = 8
+        tempImagesPosition[puzzleSize-1] = 8
         collectionOfImages![puzzleSize-1].image = imageBlank
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -201,7 +204,7 @@ class EightPuzzle: UIViewController {
         var inversion = 0
         
         for i in 0..<(list.count-1){
-            for j in i+1..<(list.count-1){
+            for j in i+1..<(list.count){
                 
                 if(list[i]>list[j]){
                     inversion++
@@ -234,5 +237,30 @@ class EightPuzzle: UIViewController {
         return inversion == 0
     }
 
+    @IBAction func exitView(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "showOriginal"){
+            
+            let svc = segue.destinationViewController as! OriginalImage
+            svc.image = self.image
+        }
+    }
+
+    @IBAction func resetClick(sender: AnyObject) {
+        
+        for i in 0..<(tempImagesPosition.count){
+            
+            collectionOfImages![i].image = imageTileList[tempImagesPosition[i]]
+            imagesPosition[i] = tempImagesPosition[i]
+            moveCount = 0
+            moveUpdate()
+        }
+    }
+    
 }
 
