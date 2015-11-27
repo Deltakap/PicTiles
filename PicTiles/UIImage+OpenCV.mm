@@ -51,7 +51,7 @@
 
 -(cv::Mat)CVGrayscaleMat
 {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(self.CGImage);
     CGFloat cols = self.size.width;
     CGFloat rows = self.size.height;
     
@@ -84,6 +84,7 @@
     CGColorSpaceRef colorSpace;
     
     if (cvMat.elemSize() == 1) {
+        NSLog(@"Gray");
         colorSpace = CGColorSpaceCreateDeviceGray();
     } else {
         colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -113,7 +114,5 @@
     
     return self;
 }
-
-
 
 @end

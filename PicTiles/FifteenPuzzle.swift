@@ -29,6 +29,8 @@ class FifteenPuzzle: UIViewController {
     
     var difficulty = -1
     
+    var scoreMultiplier = 1.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,6 +44,17 @@ class FifteenPuzzle: UIViewController {
         
         randomCreateImage()
         moveUpdate()
+        
+        switch(difficulty){
+            
+        case 1: scoreMultiplier = 1.5
+            break
+        case 2: scoreMultiplier = 2.0
+            break
+        case 3: scoreMultiplier = 3.0
+            break
+        default: scoreMultiplier = 1.0
+        }
     }
     
     func moveUpdate(){
@@ -52,6 +65,23 @@ class FifteenPuzzle: UIViewController {
     func randomCreateImage(){
         
         var processedImage:UIImage?
+        
+        if(difficulty == 0){
+            
+            processedImage = OpenCV.processImageWithOpenCV(image)
+        }
+        else if(difficulty == 1){
+            
+            processedImage = OpenCV.processImageWithOpenCV2(image)
+        }
+        else if(difficulty == 2){
+            
+            processedImage = OpenCV.processImageWithOpenCV3(image)
+        }
+        else if(difficulty == 3){
+            
+            processedImage = OpenCV.processImageWithOpenCV4(image)
+        }
         
         imageTileList = [UIImage](count: 16, repeatedValue: image)
         
@@ -144,7 +174,7 @@ class FifteenPuzzle: UIViewController {
             let adjacent = checkNorth || checkSouth || checkEast || checkWest
             
             if (checkEmpty && adjacent){
-                
+            
                 let imgTemp = collectionOfImages![indexTap1].image
                 let posTemp = imagesPosition[indexTap1]
                 
@@ -157,17 +187,26 @@ class FifteenPuzzle: UIViewController {
                 moveCount++
                 
                 if(checkFinish()){
+                
+                    var moveScore = 10000.0 * (90.0/Double(moveCount))
                     
-                    let alert = UIAlertController(title: "Hoo-ray!!",
-                        message: "You've finished the puzzle",
+                    moveScore = round(moveScore)
+                    
+                    let finishString = String.init(format:
+                        "\nMove Used: %d\t   %.0f\nScore Multiplier:\t  %.1f\n\nTotal Score:\t\t%.0f"
+                        , moveCount, moveScore,scoreMultiplier,moveScore*scoreMultiplier)
+                    
+                    let alert = UIAlertController(title: "Finished",
+                        message: finishString,
                         preferredStyle: UIAlertControllerStyle.Alert)
                     
-                    alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,
+                        handler: {(alert:UIAlertAction!) in self.exitView(self)}))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
             }
-            
+        
             indexTap1 = -1
             indexTap2 = -1
             
@@ -235,7 +274,7 @@ class FifteenPuzzle: UIViewController {
         return inversion == 0
     }
     
-    @IBAction func exitView(sender: AnyObject) {
+    @IBAction func exitView(sender:AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
