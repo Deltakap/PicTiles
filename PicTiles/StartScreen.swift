@@ -41,8 +41,10 @@ class StartScreen: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let svc = segue.destinationViewController as! OptionController
-        svc.image = selectedImage
+        if(segue.identifier == "toOption"){
+            let svc = segue.destinationViewController as! OptionController
+            svc.image = selectedImage
+        }
     }
     
     func moveNextView(){

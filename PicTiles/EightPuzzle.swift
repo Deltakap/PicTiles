@@ -8,6 +8,7 @@
 
 import UIKit
 import Darwin
+import CoreData
 
 class EightPuzzle: UIViewController {
     
@@ -32,6 +33,11 @@ class EightPuzzle: UIViewController {
     var difficulty = -1
     
     var scoreMultiplier = 1.0
+    
+    var cheat = false;
+    
+    var totalScore = 0.0;
+    var name:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +91,7 @@ class EightPuzzle: UIViewController {
             processedImage = OpenCV.processImageWithOpenCV4(image)
         }
         
-        let imageBlank: UIImage! = UIImage.init(named: "darkbg.gif")
+        let imageBlank: UIImage! = UIImage.init(named: "darkbg.png")
         
         let tempImageRef: CGImageRef = processedImage!.CGImage!
         
@@ -165,7 +171,7 @@ class EightPuzzle: UIViewController {
             
             let adjacent = checkNorth || checkSouth || checkEast || checkWest
             
-//            if (checkEmpty && adjacent){
+            if (checkEmpty && adjacent || cheat){
             
                 let imgTemp = collectionOfImages![indexTap1].image
                 let posTemp = imagesPosition[indexTap1]
@@ -184,20 +190,34 @@ class EightPuzzle: UIViewController {
                     
                     moveScore = round(moveScore)
                     
+                    totalScore = moveScore*scoreMultiplier
+                    
                     let finishString = String.init(format:
                         "\nMove Used: %d\t   %.0f\nScore Multiplier:\t  %.1f\n\nTotal Score:\t\t%.0f"
-                        , moveCount, moveScore,scoreMultiplier,moveScore*scoreMultiplier)
+                        , moveCount, moveScore,scoreMultiplier,totalScore)
                     
                     let alert = UIAlertController(title: "Finished",
                         message: finishString,
                         preferredStyle: UIAlertControllerStyle.Alert)
                     
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,
-                        handler: {(alert:UIAlertAction!) in self.exitView(self)}))
+                    alert.addTextFieldWithConfigurationHandler{ (textField) in
+                        textField.placeholder = "Name"
+                        textField.keyboardType = .Default
+                    }
+                    
+                    alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default,
+                        handler: {(action:UIAlertAction!) in
+                            
+                            let textField = alert.textFields?.first
+                            self.name = textField?.text
+                            self.exitView(self)
+                        })
+                    )
+                    
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             
-//            }
+            }
             
             indexTap1 = -1
             indexTap2 = -1
@@ -267,7 +287,36 @@ class EightPuzzle: UIViewController {
     }
 
     @IBAction func exitView(sender:AnyObject) {
+
+        if(name != ""){
         
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            let entity = NSEntityDescription.entityForName("Score",
+                inManagedObjectContext:managedContext)
+            
+            let score = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext: managedContext)
+            
+            score.setValue(name, forKey: "name")
+            score.setValue(totalScore, forKey: "score")
+            
+            do {
+                try managedContext.save()
+                NSLog("Insert Successfully")
+                
+            } catch let error as NSError  {
+                NSLog("Can't insert DB")
+            }
+
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func exitView2(sender:AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -291,5 +340,17 @@ class EightPuzzle: UIViewController {
         }
     }
     
+    @IBAction func cheatClick(sender: AnyObject) {
+        
+        if(!cheat){
+            cheat = true
+            sender.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal)
+        }
+        else{
+            cheat = false
+            sender.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        }
+    }
+
 }
 

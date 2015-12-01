@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FifteenPuzzle: UIViewController {
 
@@ -30,6 +31,9 @@ class FifteenPuzzle: UIViewController {
     var difficulty = -1
     
     var scoreMultiplier = 1.0
+    
+    var totalScore = 0.0;
+    var name:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +98,7 @@ class FifteenPuzzle: UIViewController {
             processedImage = OpenCV.processImageWithOpenCV2(image)
         }
         
-        let imageBlank: UIImage! = UIImage.init(named: "darkbg.gif")
+        let imageBlank: UIImage! = UIImage.init(named: "darkbg.png")
         
         let tempImageRef: CGImageRef = processedImage!.CGImage!
         
@@ -192,16 +196,30 @@ class FifteenPuzzle: UIViewController {
                     
                     moveScore = round(moveScore)
                     
+                    totalScore = moveScore*scoreMultiplier
+                    
                     let finishString = String.init(format:
                         "\nMove Used: %d\t   %.0f\nScore Multiplier:\t  %.1f\n\nTotal Score:\t\t%.0f"
-                        , moveCount, moveScore,scoreMultiplier,moveScore*scoreMultiplier)
+                        , moveCount, moveScore,scoreMultiplier,totalScore)
                     
                     let alert = UIAlertController(title: "Finished",
                         message: finishString,
                         preferredStyle: UIAlertControllerStyle.Alert)
                     
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,
-                        handler: {(alert:UIAlertAction!) in self.exitView(self)}))
+                    alert.addTextFieldWithConfigurationHandler{ (textField) in
+                        textField.placeholder = "Name"
+                        textField.keyboardType = .Default
+                    }
+                    
+                    alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default,
+                        handler: {(action:UIAlertAction!) in
+                            
+                            let textField = alert.textFields?.first
+                            self.name = textField?.text
+                            self.exitView(self)
+                        })
+                    )
+                    
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
@@ -276,6 +294,36 @@ class FifteenPuzzle: UIViewController {
     
     @IBAction func exitView(sender:AnyObject) {
         
+        if(name != ""){
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            let entity = NSEntityDescription.entityForName("Score",
+                inManagedObjectContext:managedContext)
+            
+            let score = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext: managedContext)
+            
+            score.setValue(name, forKey: "name")
+            score.setValue(totalScore, forKey: "score")
+            
+            do {
+                try managedContext.save()
+                NSLog("Insert Successfully")
+                
+            } catch let error as NSError  {
+                NSLog("Can't insert DB")
+            }
+            
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    @IBAction func exitView2(sender:AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -58,17 +58,15 @@ using namespace std;
 
 + (UIImage*) processImageWithOpenCV4: (UIImage*) inputImage{
     
-    Mat img = [inputImage CVMat];
+    Mat img = [inputImage CVMat3];
+    Mat dst;
     
+    stylization(img, dst, 150, 0.8f);
+    
+    img = dst;
     cvtColor(img, img, CV_BGR2GRAY);
     
-    for(int i=0;i<img.rows;i++){
-        for(int j=0;j<img.cols;j++){
-            img.at<uchar>(i,j) = 255-img.at<uchar>(i,j);
-        }
-    }
-    
-    int randomRotate =arc4random_uniform(8);
+    int randomRotate =arc4random_uniform(7);
     
     Point2f pt(img.cols/2., img.rows/2.);
     Mat r = getRotationMatrix2D(pt, (randomRotate+1)*45, 1.0);
